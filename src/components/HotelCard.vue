@@ -1,40 +1,33 @@
 <template>
-  <div class="container">
-    <div class="card mb-3">
-      <div class="row">
-        <div class="col-auto">
-          <div>
-            <img :src="hotel.imgUrl" class="hotel-img" alt="hotel-img" />
-          </div>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-auto">
+        <img :src="hotel.imgUrl" class="hotel-img" alt="hotel-img" />
+      </div>
+      <div class="col-md">
+        <div class="card-body">
+          <h5 class="card-title hotel-name name">{{ hotel.name }}</h5>
+          <p class="card-text text-muted mb-2">
+            <i class="fas fa-map-marker-alt red-text"></i>
+            <span class="ms-1 red-text">{{ hotel.location }}</span>
+          </p>
+          <p class="card-text maxlines">{{ hotel.description }}</p>
         </div>
-        <div class="col-md">
-          <div class="card-body">
-            <h5 class="card-title hotel-name name">{{ hotel.name }}</h5>
-            <p class="card-text text-muted mb-2">
-              <i class="fas fa-map-marker-alt red-text"></i>
-              <span class="ms-1 red-text">{{ hotel.location }}</span>
-            </p>
-            <p class="card-text maxlines">{{ hotel.description }}</p>
-          </div>
+      </div>
+      <div
+        class="col-md-auto my-3 mx-3 d-flex flex-column justify-content-between"
+      >
+        <div class="d-flex">
+          <h6 class="mt-2">{{ hotel.feedback }}</h6>
+          <span class="badge text-bg-danger fs-5 ms-3">{{ hotel.scores }}</span>
         </div>
-        <div class="col-md-auto my-3 mx-3 flex-column">
-          <div class="center-text d-flex justify-content-start">
-            <h6 class="d-flex">{{ hotel.feedback }}</h6>
-            <span class="badge text-bg-danger fs-5 py-3">{{
-              hotel.scores
-            }}</span>
-          </div>
-          <br />
-          <br />
-
-          <div class=" ">
-            <h5 class="py-3">
-              {{
-                "NT$" +
-                hotel.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              }}<span class="fs-6 fw-light px-2">起</span>
-            </h5>
-          </div>
+        <div class="">
+          <h5>
+            {{
+              "NT$" +
+              hotel.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }}<span class="fs-6 fw-light px-2">起</span>
+          </h5>
         </div>
       </div>
     </div>
@@ -53,23 +46,11 @@ export default {
 <style scoped>
 .hotel-img {
   overflow: hidden;
-  min-width: 430px;
-  height: 200px;
   object-fit: cover;
 }
 
 .hotel-img:hover {
   cursor: pointer;
-}
-
-.padding-right {
-  padding-right: 3px;
-}
-
-.center-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .hotel-name:hover {
   cursor: pointer;
@@ -91,5 +72,23 @@ export default {
   -webkit-line-clamp: 4; /* number of lines to show */
   line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+
+@media only screen and (min-width: 765px) {
+  img {
+    width: 250px;
+    height: 200px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  img {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
+  }
 }
 </style>
