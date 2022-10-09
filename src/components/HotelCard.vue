@@ -6,10 +6,18 @@
       </div>
       <div class="col-md">
         <div class="card-body">
-          <h5 class="card-title hotel-name name">{{ hotel.name }}</h5>
+          <h5 class="card-title hotel-name name">
+            {{ hotel.name }}
+            <span
+              v-for="facility in hotel.facilities"
+              :key="facility.id"
+              class="badge rounded-pill text-bg-secondary fw-lighter ms-1 name2"
+              >{{ facility }}</span
+            >
+          </h5>
           <p class="card-text text-muted mb-2">
-            <i class="fas fa-map-marker-alt red-text"></i>
-            <span class="ms-1 red-text">{{ hotel.location }}</span>
+            <i class="fas fa-map-marker-alt text-danger"></i>
+            <span class="ms-1 text-danger fw-light">{{ hotel.location }}</span>
           </p>
           <p class="card-text maxlines">{{ hotel.description }}</p>
         </div>
@@ -52,19 +60,15 @@ export default {
 .hotel-img:hover {
   cursor: pointer;
 }
-.hotel-name:hover {
-  cursor: pointer;
-}
 
 .name {
   font-weight: bold;
   font-size: 18px;
 }
-
-.red-text {
-  color: #e60013;
+.name2 {
+  font-weight: bold;
+  font-size: 10px;
 }
-
 .maxlines {
   overflow: hidden;
   text-overflow: ellipsis;
